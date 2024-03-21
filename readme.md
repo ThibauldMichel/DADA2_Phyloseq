@@ -13,6 +13,11 @@ The pipeline will create a ```results``` and a ```plots``` directories to store 
 
 ## How to run the pipeline?
 
+### Scripts
+The directories of the pipeline can be downloaded at the location of your choice using the **<> Code** button above, or on BASH using the command:
+
+```git clone git@github.com:ThibauldMichel/DADA2_Phyloseq.git```
+
 ### Dependancies
 The scripts will install R dependancies needed by the pipeline. However, a recent version of **cutadapt** is needed. Check the cutadapt website for [installation instructions](https://cutadapt.readthedocs.io/en/stable/installation.html). 
 
