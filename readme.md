@@ -8,7 +8,7 @@ It uses the [reference database manager for R](https://github.com/fkeck/refdb) t
 Other elements have been written from the official DADA2 documentation and [official tutorial](https://benjjneb.github.io/dada2/index.html). 
 
 ## Directories
-The Dada2 and Phyloseq scripts are located in the ```scripts``` directory, and paths are set up to run them from this location.
+The Dada2 and Phyloseq scripts are located in the ```scripts``` directory, and paths are set up to run them from this location. The raw sequencing reads should be stored in the ```data``` directory.
 The pipeline will create a ```results``` and a ```plots``` directories to store the output of the pipeline.
 
 ## Dependancies
