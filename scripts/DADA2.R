@@ -1,3 +1,10 @@
+
+# Intall Dada2 package if not installed already.
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install("dada2", version = "3.11")
+
+# Load library.
 library(dada2)
 
 # Your path to the raw reads here:
