@@ -1,7 +1,8 @@
 # DADA2 and Phyloseq pipelines
 
 ## Description
-This pipeline has been written from the DADA2 script developped by Francois Keck (https://github.com/fkeck/DADA2_diatoms_pipeline) and the 
+This pipeline has been written from the DADA2 script developped by Francois Keck (https://github.com/fkeck/DADA2_diatoms_pipeline) and the files conversion for Phyloseq of the ANF MetaBioDiv workshop (https://anf-metabiodiv.github.io/course-material/practicals/preprocessing_phyloseq.html).
+
 It uses the reference database manager for R (https://github.com/fkeck/refdb). Elements of the pipeline can be found in the official DADA2 documentation and official tutorial (https://benjjneb.github.io/dada2/index.html). 
 
 ## Directories
