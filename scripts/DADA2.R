@@ -1,3 +1,4 @@
+## DADA2 pipeline
 
 # Intall Dada2 package if not installed already.
 if (!requireNamespace("BiocManager", quietly = TRUE))
