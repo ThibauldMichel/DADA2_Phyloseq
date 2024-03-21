@@ -51,7 +51,9 @@ fas_Rs_cut <- file.path(path_cut, basename(fas_Rs_raw))
 R1_flags <- paste(paste("-g", FWD, collapse = " "), paste("-a", REV_RC, collapse = " "))
 R2_flags <- paste(paste("-G", REV, collapse = " "), paste("-A", FWD_RC, collapse = " "))
 
-cutadapt <- "cutadapt" # Path to the executable
+# Path to the cutadapt executable.
+cutadapt <- "cutadapt" 
+
 for(i in seq_along(fas_Fs_raw)) {
   cat("Processing", "-----------", i, "/", length(fas_Fs_raw), "-----------\n")
   system2(cutadapt, args = c(R1_flags, R2_flags,
