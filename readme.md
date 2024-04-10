@@ -8,8 +8,8 @@ It uses the [reference database manager for R](https://github.com/fkeck/refdb) t
 Other elements have been written from the official DADA2 documentation and [official tutorial](https://benjjneb.github.io/dada2/index.html). 
 
 ## Directories
-The Dada2 and Phyloseq scripts are located in the ```scripts``` directory, and paths are set up to run them from this location. The raw sequencing reads should be stored in the ```data``` directory.
-The pipeline will create a ```results``` and a ```plots``` directories to store the output of the pipeline.
+The Dada2 and Phyloseq scripts are located in the ```scripts``` directory, and paths are set up to run them from this location. The raw sequencing reads should be stored in the ```data``` directory which should be imported with the ```scripts``` directories.
+The pipeline will create a ```results``` and a ```plots``` directories to store the outputs.
 
 ## How to run the pipeline?
 
@@ -21,11 +21,21 @@ The directories of the pipeline can be downloaded at the location of your choice
 ### 2. Install dependancies
 The scripts will install R dependancies needed by the pipeline. However, a recent version of **cutadapt** is needed. Check the cutadapt website for [installation instructions](https://cutadapt.readthedocs.io/en/stable/installation.html). 
 
-The path to the cutadapt executable should be provided between double quotes line 55 of the ```scripts/DADA2.R``` file as follow:
+In a Windows operating system environment, the path to the cutadapt executable should be provided between double quotes line 55 of the ```scripts/DADA2.R``` file as follow:
+
+```cutadapt <- "C:/path/to/cutadapt/executable" ```
+
+In a UNIX-based environment (Mac OS or Linux) the path of cutadapt should be provided as well. 
 
 ```cutadapt <- "/path/to/cutadapt/executable" ```
 
-If cutadapt is installed on a BASH environment and in the $PATH you can keep the base syntax:
+Alternatively, you may choose to put Cutadapt in the $PATH. To do this, open the file ```
+
+
+
+```export PATH=$PATH:/dir_containing_cutadapt```
+
+Then the script should run without modifications with line 55 unchanged as follow:
 
 ```cutadapt <- "cutadapt"```
 
