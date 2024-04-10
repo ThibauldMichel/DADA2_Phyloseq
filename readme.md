@@ -81,4 +81,7 @@ In Next Generation Sequencing (NGS) data sets, two type of reads are provided in
 {ID sample number}_L{Sequencing lane number}_R2_001.fastq.gz
 ```
 
+### 5. Run the Quality Check (QC)
+The pipeline can now be run through excecuting all the commands located in the **SET UP THE ENVIRONMENT**, **REMOVAL OF PRIMERS**, and **QC CHECK** steps. 
 
+The pipeline will output graphs about the average error rate observed in the Forward and Reverse reads in the ```plots``` directory. 

@@ -1,5 +1,6 @@
 ## DADA2 pipeline
 
+#### SET UP THE ENVIRONMENT ####
 # Intall Dada2 package if not installed already.
 if (!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
@@ -72,6 +73,8 @@ out_1 <- cbind(ShortRead::qa(fas_Fs_raw)[["readCounts"]][,"read", drop = FALSE],
 head(out_1)
 
 ###################################################
+
+#### QC CHECK ####
 
 #### DADA2 Pipeline starts here ####
 
