@@ -85,3 +85,20 @@ In Next Generation Sequencing (NGS) data sets, two type of reads are provided in
 The pipeline can now be run through excecuting all the commands located in the **SET UP THE ENVIRONMENT**, **REMOVAL OF PRIMERS**, and **QC CHECK** steps. 
 
 The pipeline will output graphs about the average error rate observed in the Forward and Reverse reads in the ```plots``` directory. 
+
+<div style="display: flex; justify-content: center;">
+    <div style="margin-right: 20px;">
+        <img src="reads_forward.png" alt="Image 1" width="400"/>
+    </div>
+    <div style="margin-left: 20px;">
+        <img src="reads_reverse.png" alt="Image 2" width="400"/>
+    </div>
+</div>
+
+<div style="text-align: center; margin-top: 20px;">
+    <p>QC check of the reads Forward and Reverse.</p>
+</div>
+
+We will use the average QC check to estimate how to trim our reads. Look at the plot, and locate the Cycle score for which the quality start to drop for Forward and Reverse reads. 
+
+In the exemple above the Quality Score drops at 220 for Forward reads, and 230 for Reverse reads.
