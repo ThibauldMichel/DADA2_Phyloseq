@@ -72,3 +72,13 @@ REV <- c("CCTTCTAATTTACCWACWACTG",
          "CCTTCTAATTTACCWACAACAG")
 ```
 
+### 4. Prepare the reads
+
+In Next Generation Sequencing (NGS) data sets, two type of reads are provided in different files. Reads *forward*, labelled R1 and *reverse*, labelled R2. For each sample, both files R1 and R2 have to be put in the ```data``` directory in a compressed format, ending with ```fastq.gz```. 
+
+```
+{ID sample number}_L{Sequencing lane number}_R1_001.fastq.gz
+{ID sample number}_L{Sequencing lane number}_R2_001.fastq.gz
+```
+
+
