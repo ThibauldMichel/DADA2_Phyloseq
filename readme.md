@@ -16,28 +16,42 @@ The pipeline will create a ```results``` and a ```plots``` directories to store 
 ### 1. Download the scripts
 The directories of the pipeline can be downloaded at the location of your choice using the **<> Code** button above, or on BASH using the command:
 
-```git clone git@github.com:ThibauldMichel/DADA2_Phyloseq.git```
+```
+git clone git@github.com:ThibauldMichel/DADA2_Phyloseq.git
+```
 
 ### 2. Install dependancies
 The scripts will install R dependancies needed by the pipeline. However, a recent version of **cutadapt** is needed. Check the cutadapt website for [installation instructions](https://cutadapt.readthedocs.io/en/stable/installation.html). 
 
-In a Windows operating system environment, the path to the cutadapt executable should be provided between double quotes line 55 of the ```scripts/DADA2.R``` file as follow:
+#### a. Windows operating system 
 
-```cutadapt <- "C:/path/to/cutadapt/executable" ```
+The path to the cutadapt executable should be provided between double quotes line 55 of the ```scripts/DADA2.R``` file as follow:
 
-In a UNIX-based environment (Mac OS or Linux) the path of cutadapt should be provided as well. 
+```
+cutadapt <- "C:/path/to/cutadapt/executable" 
+```
 
-```cutadapt <- "/path/to/cutadapt/executable" ```
+#### b. UNIX-based environment (Mac OS or Linux) 
 
-Alternatively, you may choose to put Cutadapt in the $PATH. To do this, open the file ```
+The path of cutadapt should be provided as well. 
 
+```
+cutadapt <- "/path/to/cutadapt/executable" 
+```
 
+Alternatively, you may choose to put cutadapt in the $PATH. To do this, open the file ```bashrc``` with the following command:
 
-```export PATH=$PATH:/dir_containing_cutadapt```
+```
+gedit ~/.bashrc
+```
 
-Then the script should run without modifications with line 55 unchanged as follow:
+Then paste the path to cutadapt as following.
 
-```cutadapt <- "cutadapt"```
+```
+export PATH=$PATH:/dir_containing_cutadapt
+```
+
+Then the script should run without modifications.
 
 
 ### 3. Set up primers removal
@@ -46,3 +60,15 @@ The Dada2 script incorporate a primer removal step from the [official DADA2 ITS 
 The base set of primers used in the pipeline are designed to target a 312bp barcode located on a rbcL plastid gene described by from [Vasselon et al. 2017](https://www.sciencedirect.com/science/article/pii/S1470160X17303497?via%3Dihub).
 
 If you are using another set of primers, replace the sequence forward (FWD) and reverse (REV) in the ```scripts/DADA2.R``` script lines 36 and 40.
+
+Each primers sequences has to be between double quotes, and different primers has to be separated by a comma. In the base pipeline, three forward primers and two forwards are used as follow.
+
+```
+FWD <- c("AGGTGAAGTAAAAGGTTCWTACTTAAA",
+         "AGGTGAAGTTAAAGGTTCWTAYTTAAA",
+         "AGGTGAAACTAAAGGTTCWTACTTAAA")
+
+REV <- c("CCTTCTAATTTACCWACWACTG",
+         "CCTTCTAATTTACCWACAACAG")
+```
+
