@@ -68,9 +68,9 @@ The Dada2 script incorporate a primer removal step from the [official DADA2 ITS 
 
 The base set of primers used in the pipeline are designed to target a 312bp barcode located on a rbcL plastid gene described by from [Vasselon et al. 2017](https://www.sciencedirect.com/science/article/pii/S1470160X17303497?via%3Dihub).
 
-If you are using another set of primers, replace the sequence forward (FWD) and reverse (REV) in the ```scripts/DADA2.R``` script lines 36 and 40.
+If you are using another set of primers, replace the sequence *Forward* (FWD) and *Reverse* (REV) in the ```scripts/DADA2.R``` script lines 36 and 40.
 
-Each primers sequences has to be between double quotes, and different primers has to be separated by a comma. In the base pipeline, three forward primers and two forwards are used as follow.
+Each primers sequences has to be between double quotes, and different primers has to be separated by a comma. In the base pipeline, 3 *Forward* primers and 2 *Reverse* are used as follow.
 
 ```
 FWD <- c("AGGTGAAGTAAAAGGTTCWTACTTAAA",
@@ -83,7 +83,7 @@ REV <- c("CCTTCTAATTTACCWACWACTG",
 
 ### 4. Prepare the reads
 
-In Next Generation Sequencing (NGS) data sets, two type of reads are provided in different files. Reads *forward*, labelled R1 and *reverse*, labelled R2. For each sample, both files R1 and R2 have to be put in the ```data``` directory in a compressed format, ending with ```fastq.gz```. 
+In Next Generation Sequencing (NGS) data sets, two type of reads are provided in different files. Reads *Forward*, labelled R1 and *Reverse*, labelled R2. For each sample, both files R1 and R2 have to be put in the ```data``` directory in a compressed format, ending with ```fastq.gz```. 
 
 ```
 {ID sample number}_L{Sequencing lane number}_R1_001.fastq.gz
@@ -104,9 +104,11 @@ getwd()
 
 
 ### 6. Run the Quality Check (QC)
-The pipeline can now be run through excecuting all the commands located in the **SET UP THE ENVIRONMENT**, **REMOVAL OF PRIMERS**, and **QC CHECK** steps. 
+The pipeline can now be run up to the Quality Check steps.
 
-The pipeline will output graphs about the average error rate observed in the Forward and Reverse reads in the ```plots``` directory. 
+For this, run all the commands located in the **SET UP THE ENVIRONMENT**, **REMOVAL OF PRIMERS**, and **QC CHECK** parts of the ```DADA2.R``` script. 
+
+The pipeline will output graphs about the average error rate observed in the *Forward* and *Reverse* reads in the ```plots``` directory. 
 
 <div style="display: flex; justify-content: center;">
     <div style="margin-right: 20px;">
@@ -123,4 +125,11 @@ The pipeline will output graphs about the average error rate observed in the For
 
 We will use the average QC check to estimate how to trim our reads. Look at the plot, and locate the **Cycle** value (x-axis) for which the **Quality Score** (y-axis) start to drop for Forward and Reverse reads. 
 
-In the exemple above the Quality Score drops at 220 for Forward reads, and 230 for Reverse reads.
+In the exemple above the Quality Score drops at 220 for Forward reads, and 230 for Reverse reads. Therefore, we will trim our reads at these values.
+
+You can now input these values in the ```DADA2.R script```, line 115. The two values are given toghether in the ```truncLen``` option of the function ```filterAndTrim()```. In our case, the values would be:
+
+```
+out_2 <- filterAndTrim(fas_Fs_process, fas_Fs_filtered, fas_Rs_process, fas_Rs_filtered,
+                       truncLen = c(220, 230)
+```
