@@ -6,6 +6,14 @@ if (!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
 BiocManager::install("dada2", version = "3.11")
 
+# We will use the remotes package to download the reference library
+if (!requireNamespace("remotes", quietly = TRUE)) {
+install.packages("remotes")
+}
+
+# Install the downloading tool for diatbarcode if necessary  
+remotes::install_github("fkeck/diatbarcode")
+
 # Load library.
 library(dada2)
 
@@ -99,7 +107,7 @@ pdf(file.path(path_plots, "Read_quality_profile_aggregated.pdf"))
                             size = ifelse(length(fas_Rs_process) < 100, length(fas_Rs_process), 100)),
                      aggregate = TRUE)
   p + ggplot2::labs(title = "Reverse")
-dev.off()
+-dev.off()
 
 
 #### FILTER AND TRIM ####
@@ -162,6 +170,9 @@ head(track)
 #### ASSIGN TAXONOMY ####
 # Here we download and use the Diat.barcode (last version) pre-processed for DADA2.
 # You can use your own local database if needed.
+
+
+
 tax_fas <- diatbarcode::download_diatbarcode(flavor = "rbcl312_dada2_tax")
 tax <- assignTaxonomy(seqtab_nochim, tax_fas$path, minBoot = 75,
                       taxLevels = c("Empire", "Kingdom", "Subkingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species"),

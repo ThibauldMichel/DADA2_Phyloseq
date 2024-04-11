@@ -104,9 +104,11 @@ getwd()
 
 
 ### 6. Run the Quality Check (QC)
-The pipeline can now be run up to the Quality Check steps.
+The pipeline can now be run up to the Quality Check steps, enabling to vizualize the quality profiles of *Forward* and *Reverse* reads, necessary to adapt the trimming parameters in subsequent steps.
 
 For this, run all the commands located in the **SET UP THE ENVIRONMENT**, **REMOVAL OF PRIMERS**, and **QC CHECK** parts of the ```DADA2.R``` script. 
+
+The cutadapt step in **REMOVAL OF PRIMERS** and ```plotQualityProfile()``` in **QC CHECK** are the most time-consuming steps and can last for tens of minutes, depending of the size of the dataset and RAM available. 
 
 The pipeline will output graphs about the average error rate observed in the *Forward* and *Reverse* reads in the ```plots``` directory. 
 
@@ -133,3 +135,11 @@ You can now input these values in the ```DADA2.R script```, line 115. The two va
 out_2 <- filterAndTrim(fas_Fs_process, fas_Fs_filtered, fas_Rs_process, fas_Rs_filtered,
                        truncLen = c(220, 230)
 ```
+
+### 7. Filter and trim
+Once the parameters of ```filterAndTrim()``` modified, all the commands of the **FILTER AND TRIM** part of the pipeline can be run. The ```filterAndTrim()``` command is time-consuming and took more than 10 minutes to give an output with the ACA_2018 data set (1.4GB of raw reads).  
+
+### 8. Learn error rate
+The DADA2 algorithm will learn the error rate specific to the data set with a parametric error model, which is going to be used in subsequent steps to remove ambiguous reads.
+The ```leanErrors()``` command is time-consuming as well, and will take tens of minutes to run for both *Forward* and *Reverse* sets.
+
