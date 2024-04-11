@@ -21,6 +21,9 @@ The directories of the pipeline can be downloaded at the location of your choice
 ```
 git clone git@github.com:ThibauldMichel/DADA2_Phyloseq.git
 ```
+You will find a ```scripts``` directory countaining two R scripts: ```DADA2.R``` and ```Phyloseq.R```. We will run in this order DADA2 to identify species in our samples, and Phyloseq to plot the results. 
+
+
 
 ### 2. Install dependancies
 The scripts will install R dependancies needed by the pipeline. However, a recent version of **cutadapt** is needed. Check the cutadapt website for [installation instructions](https://cutadapt.readthedocs.io/en/stable/installation.html). 
@@ -64,11 +67,11 @@ Then the script should run without modifications.
 
 
 ### 3. Set up primers removal
-The Dada2 script incorporate a primer removal step from the [official DADA2 ITS Pipeline Workflow](https://benjjneb.github.io/dada2/ITS_workflow.html). 
+The ```DADA2.R``` script incorporate a primer removal step from the [official DADA2 ITS Pipeline Workflow](https://benjjneb.github.io/dada2/ITS_workflow.html). 
 
 The base set of primers used in the pipeline are designed to target a 312bp barcode located on a rbcL plastid gene described by from [Vasselon et al. 2017](https://www.sciencedirect.com/science/article/pii/S1470160X17303497?via%3Dihub).
 
-If you are using another set of primers, replace the sequence *Forward* (FWD) and *Reverse* (REV) in the ```scripts/DADA2.R``` script lines 36 and 40.
+If you are using another set of primers, replace the sequence *Forward* (FWD) and *Reverse* (REV) in the ```DADA2.R``` script lines 36 and 40.
 
 Each primers sequences has to be between double quotes, and different primers has to be separated by a comma. In the base pipeline, 3 *Forward* primers and 2 *Reverse* are used as follow.
 
@@ -139,7 +142,23 @@ out_2 <- filterAndTrim(fas_Fs_process, fas_Fs_filtered, fas_Rs_process, fas_Rs_f
 ### 7. Filter and trim
 Once the parameters of ```filterAndTrim()``` modified, all the commands of the **FILTER AND TRIM** part of the pipeline can be run. The ```filterAndTrim()``` command is time-consuming and took more than 10 minutes to give an output with the ACA_2018 data set (1.4GB of raw reads).  
 
-### 8. Learn error rate
+### 8. Process the rest of the DADA2 pipeline
+
+#### Learning error rate
 The DADA2 algorithm will learn the error rate specific to the data set with a parametric error model, which is going to be used in subsequent steps to remove ambiguous reads.
 The ```leanErrors()``` command is time-consuming as well, and will take tens of minutes to run for both *Forward* and *Reverse* sets.
 
+#### Dereplication, remove chimera, and reads statistics
+Subsequently, you might run the **DEREPLICATION, SAMPLE INFERENCE & MERGE PAIRED READ**, **CONSTRUCT SEQUENCE TABLE**, **REMOVE CHIMERA**, **TRACK READS THROUGH THE PIPELINE** to finish processing the reads and make the seqtab ASVs table.
+
+#### Assign taxonomy
+During the **ASSIGN TAXONOMY** step, a two-steps ASVs identification will attribute taxonomy to each ASVs with ```assignTaxonomy()```, then use a more stringent species assignement with ```assignSpecies()```.
+
+#### Data saving and plot
+Run the rest of the ```DADA2.R``` script to save the ASV taxonomic assignements in .csv format in order to use them as an input for Phyloseq and plotting the species abundance distribution with the ```Phyloseq.R``` script.
+
+### 9. Phyloseq pipeline
+
+We will plot the data using the ```Phyloseq.R```  script, located in the ```script``` directory, as the ```DADA2.R``` script. 
+
+As the ```Phyloseq.R``` script is using files produced in step 8 of the pipeline as in input, it does not require to run in the same R session than the ```DADA2.R``` script.
