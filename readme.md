@@ -11,6 +11,8 @@ Other elements have been written from the official DADA2 documentation and [offi
 The Dada2 and Phyloseq scripts are located in the ```scripts``` directory, and paths are set up to run them from this location. The raw sequencing reads should be stored in the ```data``` directory which should be imported with the ```scripts``` directories.
 The pipeline will create a ```results``` and a ```plots``` directories to store the outputs.
 
+If you are working with **RStudio**, the default working directory might not be the ```scripts``` directory, and might prevent the pipeline to work. The method to fix this problem is detailed in the *How to run the pipeline?* tutorial, point number 5.
+
 ## How to run the pipeline?
 
 ### 1. Download the scripts
@@ -81,7 +83,20 @@ In Next Generation Sequencing (NGS) data sets, two type of reads are provided in
 {ID sample number}_L{Sequencing lane number}_R2_001.fastq.gz
 ```
 
-### 5. Run the Quality Check (QC)
+### 5. Check the pipeline path
+
+If you are working on **RStudio**, the woking directory path might not be located in the ```scripts``` directory as it is expected when simply running the R script out of RStudio. 
+
+To be sure it is the case, go to the **RStudio** tab ```Session -> Set Working Directory -> To Source File Location``` and clic on this later option.
+
+You can now check you are in the ```scripts``` directory with the command:
+
+```
+getwd()
+```
+
+
+### 6. Run the Quality Check (QC)
 The pipeline can now be run through excecuting all the commands located in the **SET UP THE ENVIRONMENT**, **REMOVAL OF PRIMERS**, and **QC CHECK** steps. 
 
 The pipeline will output graphs about the average error rate observed in the Forward and Reverse reads in the ```plots``` directory. 
