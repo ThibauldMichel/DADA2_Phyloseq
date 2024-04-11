@@ -32,6 +32,13 @@ The path to the cutadapt executable should be provided between double quotes lin
 ```
 cutadapt <- "C:/path/to/cutadapt/executable" 
 ```
+A simple method to do this is to download the Github executable *cutadapt.exe* located [here](https://github.com/marcelm/cutadapt/releases) and to provide the link to this file line 55 of the ```scripts/DADA2.R``` file. By default it is the following line, where you whould replace *usr* by your user name.
+
+```
+cutadapt <- "C:/Users/usr/Downloads/cutadapt.exe">
+```
+
+
 
 #### b. UNIX-based environment (Mac OS or Linux) 
 
@@ -114,6 +121,6 @@ The pipeline will output graphs about the average error rate observed in the For
     <p>QC check of the reads Forward and Reverse.</p>
 </div>
 
-We will use the average QC check to estimate how to trim our reads. Look at the plot, and locate the Cycle score for which the quality start to drop for Forward and Reverse reads. 
+We will use the average QC check to estimate how to trim our reads. Look at the plot, and locate the **Cycle** value (x-axis) for which the **Quality Score** (y-axis) start to drop for Forward and Reverse reads. 
 
 In the exemple above the Quality Score drops at 220 for Forward reads, and 230 for Reverse reads.
