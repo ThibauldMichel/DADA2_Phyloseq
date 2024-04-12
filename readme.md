@@ -8,7 +8,7 @@ It uses the [reference database manager for R](https://github.com/fkeck/refdb) t
 Other elements have been written from the official DADA2 documentation and [official tutorial](https://benjjneb.github.io/dada2/index.html). 
 
 ## Directories
-The Dada2 and Phyloseq scripts are located in the ```scripts``` directory, and paths are set up to run them from this location. The raw sequencing reads should be stored in the ```data``` directory which should be imported with the ```scripts``` directories.
+The ```DADA2.R``` and ```Phyloseq.R``` scripts used by the pipeline are located in the ```scripts``` directory, and paths are set up to run them from this location. The raw sequencing reads should be stored in the ```data``` directory.
 The pipeline will create a ```results``` and a ```plots``` directories to store the outputs.
 
 If you are working with **RStudio**, the default working directory might not be the ```scripts``` directory, and might prevent the pipeline to work. The method to fix this problem is detailed in the *How to run the pipeline?* tutorial, point number 5.
@@ -16,12 +16,12 @@ If you are working with **RStudio**, the default working directory might not be 
 ## How to run the pipeline?
 
 ### 1. Download the scripts
-The directories of the pipeline can be downloaded at the location of your choice using the **<> Code** button above, or on BASH using the command:
+The directories of the pipeline can be downloaded at the location of your choice using the **<> Code** button above, or on a BASH environment using the command:
 
 ```
 git clone git@github.com:ThibauldMichel/DADA2_Phyloseq.git
 ```
-You will find a ```scripts``` directory countaining two R scripts: ```DADA2.R``` and ```Phyloseq.R```. We will run in this order DADA2 to identify species in our samples, and Phyloseq to plot the results. 
+You will find a ```scripts``` directory countaining two R scripts: ```DADA2.R``` and ```Phyloseq.R```. We will run them in this order: DADA2 to identify species in our samples, and Phyloseq to plot the results. Phyloseq will be using the outputs of DADA2 located in the ```results``` directory as inputs. 
 
 
 
@@ -132,7 +132,7 @@ We will use the average QC check to estimate how to trim our reads. Look at the 
 
 In the exemple above the Quality Score drops at 220 for Forward reads, and 230 for Reverse reads. Therefore, we will trim our reads at these values.
 
-You can now input these values in the ```DADA2.R script```, line 115. The two values are given toghether in the ```truncLen``` option of the function ```filterAndTrim()```. In our case, the values would be:
+You can now input these values in the ```DADA2.R``` script, line 115. The two values are given toghether in the ```truncLen``` option of the function ```filterAndTrim()```. In our case, with the previous scores of 220 and 230 we estimated, the command would be:
 
 ```
 out_2 <- filterAndTrim(fas_Fs_process, fas_Fs_filtered, fas_Rs_process, fas_Rs_filtered,
@@ -162,3 +162,5 @@ Run the rest of the ```DADA2.R``` script to save the ASV taxonomic assignements 
 We will plot the data using the ```Phyloseq.R```  script, located in the ```script``` directory, as the ```DADA2.R``` script. 
 
 As the ```Phyloseq.R``` script is using files produced in step 8 of the pipeline as in input, it does not require to run in the same R session than the ```DADA2.R``` script.
+
+You can run all the commands located in the script, which are not requiring editing. The species abundance plots should be saved in the ```plots``` directory.
