@@ -176,12 +176,9 @@ In addition, several files formated specifically for the Phyloseq and BLAST pipe
 - ```asv_table.csv``` show the number of ASV per samples. Each rows represent an ASV and each column is a sample. Used as input for the Phyloseq module of the pipeline. 
 - ```asv.fasta``` is a FASTA-formated file incorporing ASVs names and sequences. Used as input for the BLAST module of the pipeline.
 
-
-Run the rest of the ```DADA2.R``` script to save the ASV taxonomic assignements in .csv format in order to use them as an input for Phyloseq and plotting the species abundance distribution with the ```Phyloseq.R``` script.
-
 ### 9. Phyloseq pipeline
 
-We will plot the data using the ```Phyloseq.R```  script, located in the ```script``` directory, as the ```DADA2.R``` script. 
+We will plot the  species abundance distribution from this data set using the ```Phyloseq.R```  script, located in the ```script``` directory, as the ```DADA2.R``` script. 
 
 As the ```Phyloseq.R``` script is using files produced in step 8 of the pipeline as in input, it does not require to run in the same R session than the ```DADA2.R``` script.
 
