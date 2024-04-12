@@ -16,12 +16,23 @@ If you are working with **RStudio**, the default working directory might not be 
 ## How to run the pipeline?
 
 ### 1. Download the scripts
-The directories of the pipeline can be downloaded at the location of your choice using the **<> Code** button above, or on a BASH environment using the command:
 
+#### a. Windows operating system 
+The directories of the pipeline can be downloaded at the location of your choice using the **<> Code** button located in the pipeline [Github page](https://github.com/ThibauldMichel/DADA2_Phyloseq). 
+
+#### b. UNIX-based environment (Mac OS or Linux)
+On a BASH shell as on a remote server, you can use *Git* to install the pipeline.
+To install *Git*, you can run:
+```
+conda install anaconda::git 
+```
+Then to install the pipeline:
 ```
 git clone git@github.com:ThibauldMichel/DADA2_Phyloseq.git
 ```
-You will find a ```scripts``` directory countaining two R scripts: ```DADA2.R``` and ```Phyloseq.R```. We will run them in this order: DADA2 to identify species in our samples, and Phyloseq to plot the results. Phyloseq will be using the outputs of DADA2 located in the ```results``` directory as inputs. 
+
+#### c. Directories  
+In the pipeline you will find a  ```scripts``` directory countaining two R scripts: ```DADA2.R``` and ```Phyloseq.R```. We will run them in this order: DADA2 to identify species in our samples, and Phyloseq to plot the results. Phyloseq will be using the outputs of DADA2 located in the ```results``` directory as inputs. 
 
 
 
