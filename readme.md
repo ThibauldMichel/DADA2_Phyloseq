@@ -166,6 +166,17 @@ Subsequently, you might run the **DEREPLICATION, SAMPLE INFERENCE & MERGE PAIRED
 During the **ASSIGN TAXONOMY** step, a two-steps ASVs identification will attribute taxonomy to each ASVs with ```assignTaxonomy()```, then use a more stringent species assignement with ```assignSpecies()```.
 
 #### Data saving and plot
+Run the rest of the ```DADA2.R``` script to save the pipeline outputs in the ```results``` directory. These include traditional DADA2 output (from fkeck Github):
+- ```track_reads.csv``` provide the number of reads remaining after different steps of filtering.
+- ```seq_nochim_tax.csv``` show the outputs of the basic DADA2 **assignTaxonomy()** command, with ASVs sequence, taxonomic assignement, and bootstraps values for each taxonomic rank.
+- ```seq_nochim_exact_sp.csv``` show the more stringent species-level taxonomic attribution from the **assignSpecies()** command.The file include ASVs sequence, and Genus plus Species identification.
+
+In addition, several files formated specifically for the Phyloseq and BLAST pipeline processing:
+- ```taxonomy.csv``` is similar to **seq_nochim_tax.csv**, but include an unique ASV number for this data set (numerated ASV_0001, ASV_0002, ASV_0003, etc...). Used as input for the Phyloseq module of the pipeline.  
+- ```asv_table.csv``` show the number of ASV per samples. Each rows represent an ASV and each column is a sample. Used as input for the Phyloseq module of the pipeline. 
+- ```asv.fasta``` is a FASTA-formated file incorporing ASVs names and sequences. Used as input for the BLAST module of the pipeline.
+
+
 Run the rest of the ```DADA2.R``` script to save the ASV taxonomic assignements in .csv format in order to use them as an input for Phyloseq and plotting the species abundance distribution with the ```Phyloseq.R``` script.
 
 ### 9. Phyloseq pipeline

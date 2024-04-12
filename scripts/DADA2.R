@@ -259,16 +259,16 @@ seqtab_nochim_export <- df_export(seqtab_nochim_export, new_rn = "asv")
 
 # Finally, we can export the taxonomy
 write.table(taxonomy_export,
-            file = file.path(path_results, "taxonomy.tsv"),
+            file = file.path(path_results, "taxonomy.csv"),
             quote = FALSE,
-            sep = "\t",
+            sep = ",",
             row.names = FALSE)
 
 # the ASV table
 write.table(seqtab_nochim_export,
-            file = file.path(path_results, "asv_table.tsv"),
+            file = file.path(path_results, "asv_table.csv"),
             quote = FALSE,
-            sep = "\t",
+            sep = ",",
             row.names = FALSE)
 
 # and the sequences as a fasta file

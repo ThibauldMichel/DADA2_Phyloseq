@@ -31,15 +31,15 @@ if(!dir.exists(path_plots)) dir.create(path_plots)
 
 
 #Import the ASV table:
-asv_table <- read.table(file = file.path(input_dir, "asv_table.tsv"),
+asv_table <- read.table(file = file.path(input_dir, "asv_table.csv"),
                         header = TRUE,
-                        sep = "\t",
+                        sep = ",",
                         row.names = 1)
 
 # the results of the taxonomic assignment:
-taxonomy <- read.table(file = file.path(input_dir, "taxonomy.tsv"),
+taxonomy <- read.table(file = file.path(input_dir, "taxonomy.csv"),
                         header = TRUE,
-                        sep = "\t",
+                        sep = ",",
                         row.names = 1)
 
 
