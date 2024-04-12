@@ -18,15 +18,15 @@ If you are working with **RStudio**, the default working directory might not be 
 ### 1. Download the scripts
 
 #### a. Windows operating system 
-The directories of the pipeline can be downloaded at the location of your choice using the **<> Code** button located in the pipeline [Github page](https://github.com/ThibauldMichel/DADA2_Phyloseq). 
+If you are working in a Windows environment, the directories of the pipeline can be downloaded using the **<> Code** button located in the pipeline [Github page](https://github.com/ThibauldMichel/DADA2_Phyloseq). You can then copy/paste the directories and files downloaded in the folder of your choice.
 
 #### b. UNIX-based environment (Mac OS or Linux)
-On a BASH shell as on a remote server, you can use *Git* to install the pipeline.
-To install *Git*, you can run:
+On a BASH shell similar to the linux terminal used to access a remote server, you can use *Git* to install the pipeline.
+To install *Git*, run:
 ```
 conda install anaconda::git 
 ```
-Then to install the pipeline:
+Then install the pipeline with:
 ```
 git clone git@github.com:ThibauldMichel/DADA2_Phyloseq.git
 ```
